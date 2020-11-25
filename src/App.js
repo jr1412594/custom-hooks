@@ -1,17 +1,28 @@
-import  { Component } from 'react'
+import React from 'react'
+import Counter from './components/Counter'
 
 import './App.css';
+import { useState } from 'react'
 
-class App extends Component {
+function App() {
 
-  render () {
-
-    return (
-      <div className="App">
-        Hello!
-      </div>
-    );
-  }
+  const [ showCount, setShowCount ] = useState( false )
+  
+  return (
+    <div className="App">
+        <button 
+        onClick={() => setShowCount(!showCount)}>
+          {showCount ? "home" : "Count"}
+        </button>
+        {
+          showCount ? 
+          <Counter />:
+          <h1>
+            home
+          </h1>
+        }
+    </div>
+  );
 }
 
 export default App;
